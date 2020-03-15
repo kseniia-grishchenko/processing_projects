@@ -19,11 +19,7 @@ class Ball {
   }
   
   void check_wall() {
-    if(x < r || x > width - r) {
-      speed_x *= -1;
-    }
-    
-    if(y < r || y > height - r) {
+     if(y < r || y > height - r) {
       speed_y *= -1;
     }
   }
@@ -35,7 +31,7 @@ class Ball {
   void check_stick_left(Stick stick){
     if(y > stick.y && y < stick.y + stick.size)
       if(x > stick.x + r + speed_x && x <= stick.x + r)
-      speed_x *= -1;
+      speed_x *= -1.05;
   }
     
   void check_stick_right(Stick stick){
@@ -43,4 +39,20 @@ class Ball {
       if(x < stick.x - r + speed_x && x >= stick.x - r)
       speed_x *= -1;
   }
+  
+  void check_left_lose(){
+    if(x < 0){
+      begin();
+      right_score++;
+    }
+  }
+  
+  void check_right_lose(){
+    if(x > width){
+      begin();
+      left_score++;
+    }
+  }
+  
+
 }
