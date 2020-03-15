@@ -29,6 +29,18 @@ class Ball {
   }
   
   void to_draw(){
-    ellipse(ball.x, ball.y, 2 * ball.r, 2 * ball.r);
+    ellipse(x, y, 2 * r, 2 * r);
 }
+  
+  void check_stick_left(Stick stick){
+    if(y > stick.y && y < stick.y + stick.size)
+      if(x > stick.x + r + speed_x && x <= stick.x + r)
+      speed_x *= -1;
+  }
+    
+  void check_stick_right(Stick stick){
+    if(y > stick.y && y < stick.y + stick.size)
+      if(x < stick.x - r + speed_x && x >= stick.x - r)
+      speed_x *= -1;
+  }
 }

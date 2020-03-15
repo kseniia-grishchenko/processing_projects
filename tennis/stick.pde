@@ -23,7 +23,20 @@ class Stick{
     line(x, y, x, y + size);
   }
   
- 
+  boolean check_wall_up(){
+    if(y < 0)
+      return true;
+    else return false;
+  }
   
+  boolean check_wall_down(){
+    if(y > height - size)
+      return true;
+    else return false;
+  }
   
+  void stick_right_ai(Ball ball){
+    if(y + size/2 < ball.y) move_down();
+    if(y + size/2 > ball.y) move_up();
+  }
 }
